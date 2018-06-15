@@ -1,7 +1,11 @@
 %{
 
 	#include<stdio.h>
-	
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <string.h>
+	#include <math.h>
+	#include "gram.tab.c"
 	using namespace std;
     extern double variable_values[100];
     extern int variable_set[100];

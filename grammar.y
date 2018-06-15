@@ -25,6 +25,7 @@
 %token<num> BGNP ENDP PRINT
 %token<num> LET
 %token<num> ADD RM VERIFY
+%token<num> VAR_KEYWORD
 
 %type<num> NUMBER
 %type<index> NAME
@@ -65,26 +66,27 @@ stmt: exp
 
 assign: LET NAME NUMBER { $$ = set_variable($2, $4); }
 | LET NAME { $$ = set_variable($2, 0); }
-
 ;
 
 exp: NUMBER { $$ = $1; }
 | NAME { $$ = variable_values[$1]; }
-| exp PRINT {/*IMPRIMIR GRAFO*/}
+| exp PRINT {}
 ;
 
 function: NUMBER { $$ = $1; }
 | NAME {$$ = variable_values[$1]; }
-| TO function ADD type
-| TO function VERIFY NUMBER SPACE NUMBER {/*VERIFICAR CAMINO*/}
-| TO function REMOVE type
+| TO function ADD NODE {variable_values[$1].add_node();}
+| TO function ADD EDGE NUMBER SPACE NUMBER SPACE NUMBER {variable_values[$1].add_edge($5, $7, $9);}
+| TO function VERIFY EDGE NUMBER SPACE NUMBER {variable_values[$1].verify_edge($5, $7);}
+| TO function VERIFY PATH NUMBER SPACE NUMBER {variable_values[$1].verify_path($5, $7);}
+| TO function REMOVE EDGE NUMBER SPACE NUMBER {variable_values[$1].remove_edge($5, $7);}
+| TO function REMOVE NODE NUMBER {variable_values[$1].remove_node($5);}
+| TO function CHANGE NUMBER SPACE NUMBER SPACE NUMBER {variable_values[$1].change_weight($4, $6, $8);}
 ;
 
-type: NODE NUMBER {/*agregar nodo*/]
-| EDGE NUMBER SPACE NUMBER { /*agregar arco*/}
-;
 
 %%
+
 int main() {
 	yyparse();
 }

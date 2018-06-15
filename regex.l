@@ -20,6 +20,10 @@
 "node" {return NODE; }
 "edge" {return EDGE; }
 "To" {return TO; }
+("var") {return VAR_KEYWORD;} 
 "\n" { return EOL; }
 
-%%
+%%}
+
+
+hola.imprimir(sdzxzxc);

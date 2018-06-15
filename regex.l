@@ -6,16 +6,20 @@
 %%
 
 "NEW" {return LET;}
-"(" { return LBR; }
-")" { return RBR; }
-"=" { return EQ; }
-"ADD" { return ADD; }
-"REMOVE" { return RM; }
-"CHANGE" { return CHNG; }
-"INICIO" { return BGNP; }
-"FIN" { return ENDP; }
+" " { return SPACE; }
+"START" { return BGNP; }
+"END" { return ENDP; }
 
+[A-Za-z][A-Za-z0-9_]*  { yylval.index = add_variable(yytext); return NAME; }
 
-\n { return EOL; }
-[ \t]   { /*ignore whitespaces*/ }
+"add" {return ADD;}
+"remove" {return RM;}
+"change" { return CHANGE;}
+"verify" {return VERIFY;}
+"PRINT" {return PRINT;}
+"node" {return NODE; }
+"edge" {return EDGE; }
+"To" {return TO; }
+"\n" { return EOL; }
+
 %%

@@ -1,0 +1,29 @@
+START
+NEW nombre_grafo 0
+To nombre_grafo add node
+To nombre_grafo add node
+To nombre_grafo add edge 0 1 1
+To nombre_grafo verify edge 0 1
+To nombre_grafo verify path 0 1
+To nombre_grafo change 0 1 4
+To nombre_grafo remove edge 0 1
+END
+
+START
+NEW nombre_grafo 0
+To nombre_grafo add node
+To nombre_grafo add node
+NEW nombre_grafo_a 4
+To nombre_grafo add edge 0 1 1
+To nombre_grafo_a add edge 2 3 1
+To nombre_grafo_a add edge 1 2 1
+To nombre_grafo_a verify edge 2 3
+To nombre_grafo_a add edge 3 1 5
+To nombre_grafo_a verify edge 0 1
+To nombre_grafo_a verify path 0 3
+To nombre_grafo_a change 0 1 4
+To nombre_grafo_a add node
+To nombre_grafo_a add node
+END
+
+

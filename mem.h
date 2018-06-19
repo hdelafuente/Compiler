@@ -13,10 +13,10 @@ int variable_set[100];
 int variable_counter = 0;
 
 // Store values of the variables
-double variable_values[100];
+grafo variable_values[100];
 
 /* Add a variable name to the memory store */
-int add_variable(char* var_name)
+grafo add_variable(char* var_name)
 {
     int x; // Index var
     
@@ -35,12 +35,11 @@ int add_variable(char* var_name)
 }
 
 /* Set a variables value in the memory store */
-int set_variable(int index, double val)
+void set_variable(int index, double val)
 {
     variable_values[index] = val;
     variable_set[index] = 1;
     
-    return val;
 }
 
 #endif

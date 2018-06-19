@@ -6,16 +6,24 @@
 %%
 
 "NEW" {return LET;}
-"(" { return LBR; }
-")" { return RBR; }
-"=" { return EQ; }
-"ADD" { return ADD; }
-"REMOVE" { return RM; }
-"CHANGE" { return CHNG; }
-"INICIO" { return BGNP; }
-"FIN" { return ENDP; }
+" " { return SPACE; }
+"START" { return BGNP; }
+"END" { return ENDP; }
+
+[A-Za-z][A-Za-z0-9_]*  { yylval.index = add_variable(yytext); return NAME; }
+
+"add" {return ADD;}
+"remove" {return RM;}
+"change" { return CHANGE;}
+"verify" {return VERIFY;}
+"PRINT" {return PRINT;}
+"node" {return NODE; }
+"edge" {return EDGE; }
+"To" {return TO; }
+("var") {return VAR_KEYWORD;} 
+"\n" { return EOL; }
+
+%%}
 
 
-\n { return EOL; }
-[ \t]   { /*ignore whitespaces*/ }
-%%
+hola.imprimir(sdzxzxc);

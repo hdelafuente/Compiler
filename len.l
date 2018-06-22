@@ -1,6 +1,8 @@
 %{
     #include "len.tab.h"
     #include "mem.h"
+    #include <stdio.h>
+    int line_num = 1;
 %}
 
 %%
@@ -19,7 +21,17 @@
 [0-9]+                          { yylval.num = atoi(yytext); return NUMBER; }
 [A-Za-z][A-Za-z0-9_]*           { yylval.index = add_var(yytext); return NAME; }
 [a-zA-Z_]?\"(\\.|[^\\"\n])*\"   { yylval.str = strdup(yytext); return STRING;}
-\n      { return EOL; }
+\n      { line_num++; return EOL; }
 [ \t]   { /* ignore whitespace */ }
-.       { printf("Mystery character %c\n", *yytext); }
+.       { printf("Just a dot %c\n", *yytext); }
 %%
+
+int main(int argc, char** argv) {
+	FILE *input = fopen("code.jr", "r" );
+	if(input==NULL) {
+		printf("File not found\n");
+		return -1;
+	}
+	yyin = input;
+	yylex();
+}

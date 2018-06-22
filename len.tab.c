@@ -64,18 +64,21 @@
 /* Copy the first part of user declarations.  */
 #line 1 "len.y" /* yacc.c:339  */
 
-    #include <stdio.h>
-    
-    #include "mem.h"
-    
-    extern double var_values[100];
-    extern int var_set[100];
-    
-    int yylex();
-    void yyerror(const char *s);
-    
+	#include <stdio.h>
 
-#line 79 "len.tab.c" /* yacc.c:339  */
+	#include "mem.h"
+
+	extern double var_values[100];
+	extern int var_set[100];
+	extern int line_num;
+	int yylex();
+	int yyparse();
+	FILE *yyin;
+	int yylex();
+	void yyerror(const char *s);
+
+
+#line 82 "len.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -138,13 +141,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 14 "len.y" /* yacc.c:355  */
+#line 17 "len.y" /* yacc.c:355  */
 
     int index;
     double num;
     char *str;
 
-#line 148 "len.tab.c" /* yacc.c:355  */
+#line 151 "len.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -161,7 +164,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 165 "len.tab.c" /* yacc.c:358  */
+#line 168 "len.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -460,9 +463,9 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    46,    46,    48,    49,    53,    54,    57,    58,    59,
-      60,    61,    64,    67,    68,    69,    70,    71,    72,    73,
-      76,    79,    82,    83
+       0,    49,    49,    51,    52,    56,    57,    60,    61,    62,
+      63,    64,    67,    70,    71,    72,    73,    74,    75,    76,
+      79,    82,    85,    86
 };
 #endif
 
@@ -1261,85 +1264,85 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 48 "len.y" /* yacc.c:1646  */
-    {printf("  ");}
-#line 1267 "len.tab.c" /* yacc.c:1646  */
+#line 51 "len.y" /* yacc.c:1646  */
+    { printf("  "); }
+#line 1270 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 64 "len.y" /* yacc.c:1646  */
+#line 67 "len.y" /* yacc.c:1646  */
     { (yyval.num) = set_var((yyvsp[-2].index), (yyvsp[0].num)); }
-#line 1273 "len.tab.c" /* yacc.c:1646  */
+#line 1276 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 67 "len.y" /* yacc.c:1646  */
+#line 70 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[0].num); }
-#line 1279 "len.tab.c" /* yacc.c:1646  */
+#line 1282 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 68 "len.y" /* yacc.c:1646  */
+#line 71 "len.y" /* yacc.c:1646  */
     { (yyval.num) = var_values[(yyvsp[0].index)]; }
-#line 1285 "len.tab.c" /* yacc.c:1646  */
+#line 1288 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 69 "len.y" /* yacc.c:1646  */
+#line 72 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
-#line 1291 "len.tab.c" /* yacc.c:1646  */
+#line 1294 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 70 "len.y" /* yacc.c:1646  */
-    {(yyval.num) = (yyvsp[-2].num) == (yyvsp[0].num);}
-#line 1297 "len.tab.c" /* yacc.c:1646  */
+#line 73 "len.y" /* yacc.c:1646  */
+    { (yyval.num) = (yyvsp[-2].num) == (yyvsp[0].num); }
+#line 1300 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 71 "len.y" /* yacc.c:1646  */
-    {(yyval.num) = (yyvsp[-2].num) < (yyvsp[0].num);}
-#line 1303 "len.tab.c" /* yacc.c:1646  */
+#line 74 "len.y" /* yacc.c:1646  */
+    { (yyval.num) = (yyvsp[-2].num) < (yyvsp[0].num); }
+#line 1306 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 72 "len.y" /* yacc.c:1646  */
-    {(yyval.num) = (yyvsp[-2].num) > (yyvsp[0].num);}
-#line 1309 "len.tab.c" /* yacc.c:1646  */
+#line 75 "len.y" /* yacc.c:1646  */
+    { (yyval.num) = (yyvsp[-2].num) > (yyvsp[0].num); }
+#line 1312 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 73 "len.y" /* yacc.c:1646  */
+#line 76 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-1].num); }
-#line 1315 "len.tab.c" /* yacc.c:1646  */
+#line 1318 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 76 "len.y" /* yacc.c:1646  */
-    {if((yyvsp[-2].num)){(yyval.num) = (yyvsp[0].num);}}
-#line 1321 "len.tab.c" /* yacc.c:1646  */
+#line 79 "len.y" /* yacc.c:1646  */
+    { if((yyvsp[-2].num)){(yyval.num) = (yyvsp[0].num);} }
+#line 1324 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 79 "len.y" /* yacc.c:1646  */
-    {while((yyvsp[-2].num)) { (yyval.num) = (yyvsp[-2].num);}}
-#line 1327 "len.tab.c" /* yacc.c:1646  */
+#line 82 "len.y" /* yacc.c:1646  */
+    { while((yyvsp[-2].num)) { (yyval.num) = (yyvsp[-2].num);} }
+#line 1330 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 82 "len.y" /* yacc.c:1646  */
-    {printf("%.2f\n",(yyvsp[0].num));}
-#line 1333 "len.tab.c" /* yacc.c:1646  */
+#line 85 "len.y" /* yacc.c:1646  */
+    { printf("%.2f\n",(yyvsp[0].num)); }
+#line 1336 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 83 "len.y" /* yacc.c:1646  */
-    {printf("%s\n",(yyvsp[0].str));}
-#line 1339 "len.tab.c" /* yacc.c:1646  */
+#line 86 "len.y" /* yacc.c:1646  */
+    {printf("%s\n",(yyvsp[0].str)); }
+#line 1342 "len.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1343 "len.tab.c" /* yacc.c:1646  */
+#line 1346 "len.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1567,13 +1570,21 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 85 "len.y" /* yacc.c:1906  */
+#line 88 "len.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv)
 {
-    yyparse();
+	FILE *input = fopen("code.jr", "r" );
+	if(input==NULL) {
+		printf("File not found\n");
+		return -1;
+	}
+	yyin = input;
+	yylex();
+	yyparse();
+
 }
 void yyerror(const char *s)
 {
-    fprintf(stderr, "error: %s\n", s);
+    fprintf(stderr, "error: %s found  in line %d\n", s, line_num);
 }

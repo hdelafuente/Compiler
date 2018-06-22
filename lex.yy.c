@@ -508,7 +508,9 @@ char *yytext;
 #line 2 "len.l"
     #include "len.tab.h"
     #include "mem.h"
-#line 512 "lex.yy.c"
+    #include <stdio.h>
+    int line_num = 1;
+#line 514 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -726,9 +728,9 @@ YY_DECL
 		}
 
 	{
-#line 6 "len.l"
+#line 8 "len.l"
 
-#line 732 "lex.yy.c"
+#line 734 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -787,101 +789,101 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "len.l"
+#line 9 "len.l"
 { return LBR; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "len.l"
+#line 10 "len.l"
 { return RBR; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 9 "len.l"
+#line 11 "len.l"
 { return LET; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 10 "len.l"
+#line 12 "len.l"
 { return EQ; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 11 "len.l"
+#line 13 "len.l"
 { return ADD; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 12 "len.l"
+#line 14 "len.l"
 { return EQUIV; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 13 "len.l"
+#line 15 "len.l"
 { return PRINT; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 14 "len.l"
+#line 16 "len.l"
 { return BGNP; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 15 "len.l"
+#line 17 "len.l"
 { return ENDP; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 16 "len.l"
+#line 18 "len.l"
 { return IF; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 17 "len.l"
+#line 19 "len.l"
 { return THEN; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 18 "len.l"
+#line 20 "len.l"
 { return WHILE; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 19 "len.l"
+#line 21 "len.l"
 { yylval.num = atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 20 "len.l"
+#line 22 "len.l"
 { yylval.index = add_var(yytext); return NAME; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 21 "len.l"
+#line 23 "len.l"
 { yylval.str = strdup(yytext); return STRING;}
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 22 "len.l"
-{ return EOL; }
+#line 24 "len.l"
+{ line_num++; return EOL; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 23 "len.l"
+#line 25 "len.l"
 { /* ignore whitespace */ }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 24 "len.l"
+#line 26 "len.l"
 { printf("Mystery character %c\n", *yytext); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 25 "len.l"
+#line 27 "len.l"
 ECHO;
 	YY_BREAK
-#line 885 "lex.yy.c"
+#line 887 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1882,7 +1884,17 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 25 "len.l"
+#line 27 "len.l"
 
 
+
+int main(int argc, char** argv) {
+	FILE *input = fopen("code.jr", "r" );
+	if(input==NULL) {
+		printf("File not found\n");
+		return -1;
+	}
+	yyin = input;
+	yylex();
+}
 

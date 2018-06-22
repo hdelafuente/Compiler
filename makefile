@@ -1,7 +1,7 @@
-final_compile:
-	bison -d grammar.y
-	flex regex.l
-	gcc gram.tab.c regex.yy.c -lm -o graph_excecute
+main:
+	bison -d len.y
+	flex len.l
+	gcc len.tab.c lex.yy.c -lm -o len -ll
 	
 clean:
-	rm gram.tab.c lex.yy.c gram.tab.h
+	rm len.tab.c lex.yy.c len.tab.h 

@@ -2,10 +2,9 @@
 	#include <stdio.h>
 
 	#include "mem.h"
-
+    int line_num = 1;
 	extern double var_values[100];
 	extern int var_set[100];
-	extern int line_num;
 	int yylex();
 	int yyparse();
 	FILE *yyin;
@@ -101,4 +100,11 @@ int main(int argc, char **argv)
 void yyerror(const char *s)
 {
     fprintf(stderr, "error: %s found  in line %d\n", s, line_num);
+}
+int set_var(int index, double val)
+{
+    var_values[index] = val;
+    var_set[index] = 1;
+    
+    return val;
 }

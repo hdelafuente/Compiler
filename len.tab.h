@@ -73,7 +73,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 17 "len.y" /* yacc.c:1909  */
+#line 16 "len.y" /* yacc.c:1909  */
 
     int index;
     double num;

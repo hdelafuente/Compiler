@@ -87,6 +87,7 @@ function: PRINT exp { printf("%.2f\n",$2); }
 %%
 int main(int argc, char **argv)
 {
+	var_counter = 0;
 	FILE *input = fopen("code.jr", "r" );
 	if(input==NULL) {
 		printf("File not found\n");

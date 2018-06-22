@@ -1,7 +1,6 @@
 %{
     #include "len.tab.h"
     #include "mem.h"
-    
 %}
 
 %%

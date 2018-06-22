@@ -10,7 +10,7 @@ char* var_names[100];
 int var_set[100];
 
 // Number of variables defined
-int var_counter = 0;
+int var_counter;
 
 // Store values of the variables
 double var_values[100];

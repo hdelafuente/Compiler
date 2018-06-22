@@ -2,7 +2,6 @@
 	#include <stdio.h>
 
 	#include "mem.h"
-    int line_num = 1;
 	extern double var_values[100];
 	extern int var_set[100];
 	int yylex();
@@ -87,6 +86,7 @@ function: PRINT exp { printf("%.2f\n",$2); }
 %%
 int main(int argc, char **argv)
 {
+	line_num = 1;
 	var_counter = 0;
 	FILE *input = fopen("code.jr", "r" );
 	if(input==NULL) {

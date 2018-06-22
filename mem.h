@@ -12,6 +12,7 @@ int var_set[100];
 // Number of variables defined
 int var_counter;
 
+int line_num;
 // Store values of the variables
 double var_values[100];
 

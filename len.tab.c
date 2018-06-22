@@ -67,7 +67,6 @@
 	#include <stdio.h>
 
 	#include "mem.h"
-    int line_num = 1;
 	extern double var_values[100];
 	extern int var_set[100];
 	int yylex();
@@ -77,7 +76,7 @@
 	void yyerror(const char *s);
 
 
-#line 81 "len.tab.c" /* yacc.c:339  */
+#line 80 "len.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -140,13 +139,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 16 "len.y" /* yacc.c:355  */
+#line 15 "len.y" /* yacc.c:355  */
 
     int index;
     double num;
     char *str;
 
-#line 150 "len.tab.c" /* yacc.c:355  */
+#line 149 "len.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -163,7 +162,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 167 "len.tab.c" /* yacc.c:358  */
+#line 166 "len.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -462,9 +461,9 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    48,    48,    50,    51,    55,    56,    59,    60,    61,
-      62,    63,    66,    69,    70,    71,    72,    73,    74,    75,
-      78,    81,    84,    85
+       0,    47,    47,    49,    50,    54,    55,    58,    59,    60,
+      61,    62,    65,    68,    69,    70,    71,    72,    73,    74,
+      77,    80,    83,    84
 };
 #endif
 
@@ -1263,85 +1262,85 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 50 "len.y" /* yacc.c:1646  */
+#line 49 "len.y" /* yacc.c:1646  */
     { printf("  "); }
-#line 1269 "len.tab.c" /* yacc.c:1646  */
+#line 1268 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 66 "len.y" /* yacc.c:1646  */
+#line 65 "len.y" /* yacc.c:1646  */
     { (yyval.num) = set_var((yyvsp[-2].index), (yyvsp[0].num)); }
-#line 1275 "len.tab.c" /* yacc.c:1646  */
+#line 1274 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 69 "len.y" /* yacc.c:1646  */
+#line 68 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[0].num); }
-#line 1281 "len.tab.c" /* yacc.c:1646  */
+#line 1280 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 70 "len.y" /* yacc.c:1646  */
+#line 69 "len.y" /* yacc.c:1646  */
     { (yyval.num) = var_values[(yyvsp[0].index)]; }
-#line 1287 "len.tab.c" /* yacc.c:1646  */
+#line 1286 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 71 "len.y" /* yacc.c:1646  */
+#line 70 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
-#line 1293 "len.tab.c" /* yacc.c:1646  */
+#line 1292 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 72 "len.y" /* yacc.c:1646  */
+#line 71 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-2].num) == (yyvsp[0].num); }
-#line 1299 "len.tab.c" /* yacc.c:1646  */
+#line 1298 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 73 "len.y" /* yacc.c:1646  */
+#line 72 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-2].num) < (yyvsp[0].num); }
-#line 1305 "len.tab.c" /* yacc.c:1646  */
+#line 1304 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 74 "len.y" /* yacc.c:1646  */
+#line 73 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-2].num) > (yyvsp[0].num); }
-#line 1311 "len.tab.c" /* yacc.c:1646  */
+#line 1310 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 75 "len.y" /* yacc.c:1646  */
+#line 74 "len.y" /* yacc.c:1646  */
     { (yyval.num) = (yyvsp[-1].num); }
-#line 1317 "len.tab.c" /* yacc.c:1646  */
+#line 1316 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 78 "len.y" /* yacc.c:1646  */
+#line 77 "len.y" /* yacc.c:1646  */
     { if((yyvsp[-2].num)){(yyval.num) = (yyvsp[0].num);} }
-#line 1323 "len.tab.c" /* yacc.c:1646  */
+#line 1322 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 81 "len.y" /* yacc.c:1646  */
+#line 80 "len.y" /* yacc.c:1646  */
     { while((yyvsp[-2].num)) { (yyval.num) = (yyvsp[-2].num);} }
-#line 1329 "len.tab.c" /* yacc.c:1646  */
+#line 1328 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 84 "len.y" /* yacc.c:1646  */
+#line 83 "len.y" /* yacc.c:1646  */
     { printf("%.2f\n",(yyvsp[0].num)); }
-#line 1335 "len.tab.c" /* yacc.c:1646  */
+#line 1334 "len.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 85 "len.y" /* yacc.c:1646  */
+#line 84 "len.y" /* yacc.c:1646  */
     {printf("%s\n",(yyvsp[0].str)); }
-#line 1341 "len.tab.c" /* yacc.c:1646  */
+#line 1340 "len.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1345 "len.tab.c" /* yacc.c:1646  */
+#line 1344 "len.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1569,10 +1568,11 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 87 "len.y" /* yacc.c:1906  */
+#line 86 "len.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv)
 {
+	line_num = 1;
 	var_counter = 0;
 	FILE *input = fopen("code.jr", "r" );
 	if(input==NULL) {

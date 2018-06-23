@@ -48,23 +48,21 @@ extern int yydebug;
     NUMBER = 258,
     NAME = 259,
     STRING = 260,
-    EQ = 261,
-    ADD = 262,
-    EQUIV = 263,
-    LEQ = 264,
-    GEQ = 265,
-    LET = 266,
-    IF = 267,
-    THEN = 268,
-    WHILE = 269,
-    AND = 270,
-    OR = 271,
-    EOL = 272,
-    BGNP = 273,
-    ENDP = 274,
-    PRINT = 275,
-    LBR = 276,
-    RBR = 277
+    LET = 261,
+    EQUIV = 262,
+    ADD = 263,
+    MUTL = 264,
+    DIV = 265,
+    LES = 266,
+    POW = 267,
+    EOL = 268,
+    BGNP = 269,
+    ENDP = 270,
+    PRINT = 271,
+    RIGHT = 272,
+    LEFT = 273,
+    LBR = 274,
+    RBR = 275
   };
 #endif
 
@@ -79,7 +77,7 @@ union YYSTYPE
     double num;
     char *str;
 
-#line 83 "len.tab.h" /* yacc.c:1909  */
+#line 81 "len.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

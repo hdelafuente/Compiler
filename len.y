@@ -20,9 +20,8 @@
 
 
 %token NUMBER NAME STRING
-%token<num> EQ
-%token<num> ADD EQUIV LEQ GEQ LET
-%token<num> IF THEN WHILE AND OR
+%token<num> LET EQUIV
+%token<num> ADD MUTL DIV LES POW
 %token<num> EOL
 %token<num> BGNP ENDP PRINT
 
@@ -33,54 +32,51 @@
 %type<num> line
 %type<num> stmt
 %type<num> exp
-%type<num> while
 %type<num> assign
-%type<num> conditional
 %type<num> function
 
 %left ADD
-%left OR
-%left AND
+%left MUTL
+%left DIV
+%left LES
+%left RIGHT
+%left LEFT
+
 %left LBR RBR
 
 %%
 final_program: BGNP program ENDP EOL
 
-program: { printf("  "); }
+program: { printf("\n"); }
 | program line
 ;
 
 line:
 EOL
 | stmt EOL
+| stmt stmt
 ;
 
 stmt: exp
 | assign
-| conditional
-| while
 | function
 ;
 
-assign: LET NAME EQ exp { $$ = set_var($2, $4); }
+assign: LET NAME EQUIV exp { $$ = set_var($2, $4); }
 ;
 
 exp: NUMBER { $$ = $1; }
 | NAME { $$ = var_values[$1]; }
-| exp ADD exp { $$ = $1 + $3; }
-| exp EQUIV exp { $$ = $1 == $3; }
-| exp LEQ exp { $$ = $1 < $3; }
-| exp GEQ exp { $$ = $1 > $3; }
+| exp ADD exp EOL { $$ = $1 + $3; }
+| exp MUTL exp { $$ = $1 * $3; }
+| exp DIV exp { $$ = $1 / $3; }
+| exp LES exp { $$ = $1 - $3; }
+| exp POW exp { for(int i = 0; i < $3; i++) $$ = $$ * $1; } 
 | LBR exp RBR { $$ = $2; }
 ;
 
-conditional: IF exp THEN stmt { if($2){$$ = $4;} }
-;
 
-while: WHILE exp  THEN stmt { while($2) { $$ = $2;} }
-;
-
-function: PRINT exp { printf("%.2f\n",$2); }
+function: PRINT exp { printf("%.2f\n", $2); }
 | PRINT STRING {printf("%s\n",$2); }
 ;
 %%

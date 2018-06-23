@@ -71,7 +71,7 @@ exp: NUMBER { $$ = $1; }
 | exp MUTL exp { $$ = $1 * $3; }
 | exp DIV exp { $$ = $1 / $3; }
 | exp LES exp { $$ = $1 - $3; }
-| exp POW exp { for(int i = 0; i < $3; i++) $$ = $$ * $1; } 
+| exp POW exp { $$ = $1; for(int i = 0; i < $3; i++) {$$ *= $1;}} 
 | LBR exp RBR { $$ = $2; }
 ;
 

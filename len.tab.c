@@ -1305,7 +1305,7 @@ yyreduce:
 
   case 18:
 #line 74 "len.y" /* yacc.c:1646  */
-    { for(int i = 0; i < (yyvsp[0].num); i++) (yyval.num) = (yyval.num) * (yyvsp[-2].num); }
+    { (yyval.num) = (yyvsp[-2].num); for(int i = 0; i < (yyvsp[0].num); i++) {(yyval.num) *= (yyvsp[-2].num);}}
 #line 1310 "len.tab.c" /* yacc.c:1646  */
     break;
 
